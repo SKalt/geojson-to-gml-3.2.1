@@ -27,30 +27,27 @@ a namespace to switch between geojson-handling functions by geojson.type
 **Kind**: global constant  
 
 * [converter](#converter)
-    * _static_
-        * [._multi(name, memberName, geom, gmlId, params)](#converter._multi) ⇒ <code>string</code>
-    * _inner_
-        * [~Point(coords, gmlId, params)](#converter..Point) ⇒ <code>string</code>
-        * [~LineString(coords, gmlId, params)](#converter..LineString) ⇒ <code>string</code>
-        * [~LinearRing(coords, gmlId, params)](#converter..LinearRing) ⇒ <code>string</code>
-        * [~Polygon(coords, gmlId, params)](#converter..Polygon) ⇒ <code>string</code>
-        * [~MultiPoint(coords, gmlId, params)](#converter..MultiPoint) ⇒ <code>string</code>
-        * [~MultiLineString(coords, gmlId, params)](#converter..MultiLineString) ⇒ <code>string</code>
-        * [~MultiPolygon(coords, gmlId, params)](#converter..MultiPolygon) ⇒ <code>string</code>
-        * [~GeometryCollection(coords, gmlId, params)](#converter..GeometryCollection) ⇒ <code>string</code>
+    * [~_multi(name, memberName, geom, gmlId, params)](#converter.._multi) ⇒ <code>string</code>
+    * [~Point(coords, gmlId, params)](#converter..Point) ⇒ <code>string</code>
+    * [~LineString(coords, gmlId, params)](#converter..LineString) ⇒ <code>string</code>
+    * [~LinearRing(coords, gmlId, params)](#converter..LinearRing) ⇒ <code>string</code>
+    * [~Polygon(coords, gmlId, params)](#converter..Polygon) ⇒ <code>string</code>
+    * [~MultiPoint(coords, gmlId, params)](#converter..MultiPoint) ⇒ <code>string</code>
+    * [~MultiLineString(coords, gmlId, params)](#converter..MultiLineString) ⇒ <code>string</code>
+    * [~MultiPolygon(coords, gmlId, params)](#converter..MultiPolygon) ⇒ <code>string</code>
+    * [~GeometryCollection(coords, gmlId, params)](#converter..GeometryCollection) ⇒ <code>string</code>
 
-<a name="converter._multi"></a>
+<a name="converter.._multi"></a>
 
-### converter._multi(name, memberName, geom, gmlId, params) ⇒ <code>string</code>
+### converter~_multi(name, memberName, geom, gmlId, params) ⇒ <code>string</code>
 A handler to compile geometries to multigeometries
 
-**Kind**: static method of [<code>converter</code>](#converter)  
+**Kind**: inner method of [<code>converter</code>](#converter)  
 **Returns**: <code>string</code> - a string containing gml describing the input multigeometry  
 **Throws**:
 
 - <code>Error</code> if a member geometry cannot be converted to gml
 
-**Memeberof**: converter~  
 
 | Param | Type | Description |
 | --- | --- | --- |

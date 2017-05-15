@@ -30,7 +30,7 @@ var converter = {
     /**
      * A handler to compile geometries to multigeometries
      * @method 
-     * @memeberof converter~
+     * @memberof converter~
      * @param {string} name the name of the target multigeometry
      * @param {string} memberName the gml:tag of each multigeometry member.
      * @param {Object[]|Array} geom an array of geojson geometries
@@ -78,6 +78,7 @@ var converter = {
      * @returns {string} a string containing gml representing the input geometry
      */
     'Point': function(coords, gmlId, params={}){
+	enforceGmlId();
 	var {srsName:srsName, srsDimension:srsDimension} = params;
 	return `<gml:Point${attrs({srsName:srsName, 'gml:id': gmlId})}>` +
 	         `<gml:pos${attrs({srsDimension})}>` +
@@ -97,6 +98,7 @@ var converter = {
      * @returns {string} a string containing gml representing the input geometry
      */
     'LineString': function(coords, gmlId, params={}){
+	enforceGmlId();
 	var {srsName:srsName, srsDimension:srsDimension} = params;
 	return `<gml:LineString${attrs({srsName, 'gml:id':gmlId})}>` +
 	    `<gml:posList${attrs({srsDimension})}>` +
@@ -116,6 +118,7 @@ var converter = {
      * @returns {string} a string containing gml representing the input geometry
      */
     'LinearRing': function(coords, gmlId, params={}){
+	enforceGmlId();
 	var {srsName:srsName, srsDimension:srsDimension} = params;
 	return `<gml:LinearRing${attrs({'gml:id':gmlId, srsName})}>` +
 	          `<gml:posList${attrs({srsDimension})}>` +
@@ -135,6 +138,7 @@ var converter = {
      * @returns {string} a string containing gml representing the input geometry
      */
     'Polygon': function(coords, gmlId, params={}){
+	enforceGmlId();
 	// geom.coordinates are arrays of LinearRings
 	var {srsName:srsName, srsDimension:srsDimension} = params;
 	let polygon = `<gml:Polygon${attrs({srsName, 'gml:id':gmlId})}>` +
@@ -163,6 +167,7 @@ var converter = {
      * @returns {string} a string containing gml representing the input geometry
      */
     'MultiPoint': function(coords, gmlId, params={}){
+	enforceGmlId();
 	return this._multi('MultiPoint', 'pointMember', coords, gmlId, params);
     },
     /**

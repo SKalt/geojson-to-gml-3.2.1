@@ -5,7 +5,7 @@
   "main": "geomToGml.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SKalt/geojson-to-gml.git"
+    "url": "https://github.com/SKalt/geojson-to-gml-3.2.1.git"
   },
   "scripts": {
     "test": "mocha --timeout 30000"
