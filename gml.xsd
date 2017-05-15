@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.opengis.net/gml/3.2" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="3.2.1.2">
+	<annotation>
+		<appinfo source="urn:x-ogc:specification:gml:schema-xsd:gml:3.2.1">gml.xsd</appinfo>
+		<documentation>
+			GML is an OGC Standard.
+			Copyright (c) 2007,2010 Open Geospatial Consortium.
+			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+		</documentation>
+	</annotation>
+	<!-- ====================================================================== -->
+	<include schemaLocation="http://schemas.opengis.net/gml/3.2.1/dynamicFeature.xsd"/>
+	<include schemaLocation="http://schemas.opengis.net/gml/3.2.1/topology.xsd"/>
+	<include schemaLocation="http://schemas.opengis.net/gml/3.2.1/coverage.xsd"/>
+	<include schemaLocation="http://schemas.opengis.net/gml/3.2.1/coordinateReferenceSystems.xsd"/>
+	<include schemaLocation="http://schemas.opengis.net/gml/3.2.1/observation.xsd"/>
+	<include schemaLocation="http://schemas.opengis.net/gml/3.2.1/temporalReferenceSystems.xsd"/>
+	<include schemaLocation="http://schemas.opengis.net/gml/3.2.1/deprecatedTypes.xsd"/>
+	<!-- ====================================================================== -->
+</schema>

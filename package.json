@@ -1,0 +1,26 @@
+{
+  "name": "geojson_to_gml",
+  "version": "1.0.0",
+  "description": "a package to translate geojson to gml",
+  "main": "geomToGml.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SKalt/geojson-to-gml.git"
+  },
+  "scripts": {
+    "test": "mocha --timeout 30000"
+  },
+  "keywords": [
+    "geojson",
+    "geoserver",
+    "GIS",
+    "GML",
+    "xml"
+  ],
+  "author": "Steven Kalt",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "jsdoc-to-markdown": "^3.0.0",
+    "xsd-schema-validator": "^0.5.0"
+  }
+}
