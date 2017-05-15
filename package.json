@@ -1,5 +1,5 @@
 {
-  "name": "geojson_to_gml",
+  "name": "geojson-to-gml-3",
   "version": "1.0.0",
   "description": "a package to translate geojson to gml",
   "main": "geomToGml.js",
