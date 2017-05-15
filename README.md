@@ -1,4 +1,17 @@
 A package to translate geojson geometries to GML 3.2.1.
+___
+
+Geography Markup Language (GML) is an OGC Standard.
+
+More information may be found at http://www.opengeospatial.org/standards/gml
+
+The most current schema are available at http://schemas.opengis.net/ .
+___
+
+Policies, Procedures, Terms, and Conditions of OGC(r) are available at http://www.opengeospatial.org/ogc/legal/ .
+
+OGC and OpenGIS are registered trademarks of Open Geospatial Consortium.
+
 
 ## Constants
 
