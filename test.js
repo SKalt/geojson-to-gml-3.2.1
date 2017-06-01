@@ -95,7 +95,10 @@ describe('geomToGml-3.2.1', function(){
 	it('should look right, or at least visible', function(){
 	    [point, line, polygon, multipoint,
 	     multilinestring, multipolygon, geometrycollection].map(
-		 (e)=>console.log(addNs3(gml(e, 'ab.1')), '\n------------------------\n')
+		 (e)=>console.log(
+		     addNs3(gml(e, 'ab.1')),
+		     '\n------------------------\n'
+		 )
 	     );
 	});
     });
