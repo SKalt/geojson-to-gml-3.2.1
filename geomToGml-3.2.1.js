@@ -1,16 +1,16 @@
 
 /* 
-Note this can only convert what geojson can store: simple feature types, not
+ Note this can only convert what geojson can store: simple feature types, not
  coverage, topology, etc.
  */
 /** @private*/
 function attrs(attrMappings){
-    let results = '';
-    for (let attrName in attrMappings){
-	let value = attrMappings[attrName];
-	results += (value ? ` ${attrName}="${value}"` : '');
-    }
-    return results;
+  let results = '';
+  for (let attrName in attrMappings){
+    let value = attrMappings[attrName];
+    results += (value ? ` ${attrName}="${value}"` : '');
+  }
+  return results;
 }
 
 /**
@@ -18,9 +18,9 @@ function attrs(attrMappings){
  * @function 
  */
 const enforceGmlId = (gmlId) =>{
-    if (!gmlId){
-	console.warn('No gmlId supplied');
-    }
+  if (!gmlId){
+    console.warn('No gmlId supplied');
+  }
 };
 
 /**
@@ -38,22 +38,22 @@ const enforceGmlId = (gmlId) =>{
  * @throws {Error} if a member geometry cannot be converted to gml
  */
 function multi(name, memberName, membercb, geom, gmlId, params={}){
-    enforceGmlId(gmlId);
-    var {srsName, srsDimension, gmlIds} = params;
-    let multi = `<gml:${name}${attrs({srsName, 'gml:id':gmlId})}>`;
-    geom.forEach(function(member, i){
-	multi += `<gml:${memberName}>`;
-    	let _gmlId = member.id || (gmlIds || [])[i] || '';
-    	if (name == 'MultiGeometry'){
-    	    let memberType = member.type;
-    	    member = member.coordinates;
-	    multi += membercb[memberType](member, _gmlId, params);
-    	} else {
-	    multi += membercb(member, _gmlId, params);
-	}
-    	multi += `</gml:${memberName}>`;
-    });
-    return multi + `</gml:${name}>`;
+  enforceGmlId(gmlId);
+  var {srsName, srsDimension, gmlIds} = params;
+  let multi = `<gml:${name}${attrs({srsName, 'gml:id':gmlId})}>`;
+  geom.forEach(function(member, i){
+    multi += `<gml:${memberName}>`;
+    let _gmlId = member.id || (gmlIds || [])[i] || '';
+    if (name == 'MultiGeometry'){
+      let memberType = member.type;
+      member = member.coordinates;
+      multi += membercb[memberType](member, _gmlId, params);
+    } else {
+      multi += membercb(member, _gmlId, params);
+    }
+    multi += `</gml:${memberName}>`;
+  });
+  return multi + `</gml:${name}>`;
 }
 /**
  * Converts an input geojson Point geometry to gml
@@ -66,13 +66,13 @@ function multi(name, memberName, membercb, geom, gmlId, params={}){
  * @returns {string} a string containing gml representing the input geometry
  */
 function Point(coords, gmlId, params={}){
-    enforceGmlId(gmlId);
-    var {srsName:srsName, srsDimension:srsDimension} = params;
-    return `<gml:Point${attrs({srsName:srsName, 'gml:id': gmlId})}>` +
-	`<gml:pos${attrs({srsDimension})}>` +
-	coords.reverse().join(' ') +
-	'</gml:pos>' +
-	'</gml:Point>';
+  enforceGmlId(gmlId);
+  var {srsName:srsName, srsDimension:srsDimension} = params;
+  return `<gml:Point${attrs({srsName:srsName, 'gml:id': gmlId})}>` +
+    `<gml:pos${attrs({srsDimension})}>` +
+    coords.reverse().join(' ') +
+    '</gml:pos>' +
+    '</gml:Point>';
 }
 /**
  * Converts an input geojson LineString geometry to gml
@@ -86,13 +86,13 @@ function Point(coords, gmlId, params={}){
  * @returns {string} a string containing gml representing the input geometry
  */
 function LineString(coords, gmlId, params={}){
-    enforceGmlId(gmlId);
-    var {srsName:srsName, srsDimension:srsDimension} = params;
-    return `<gml:LineString${attrs({srsName, 'gml:id':gmlId})}>` +
-	`<gml:posList${attrs({srsDimension})}>` +
-	coords.map((e)=>e.reverse().join(' ')).join(' ') + 
-	'</gml:posList>' +
-	'</gml:LineString>';
+  enforceGmlId(gmlId);
+  var {srsName:srsName, srsDimension:srsDimension} = params;
+  return `<gml:LineString${attrs({srsName, 'gml:id':gmlId})}>` +
+    `<gml:posList${attrs({srsDimension})}>` +
+    coords.map((e)=>e.reverse().join(' ')).join(' ') + 
+    '</gml:posList>' +
+    '</gml:LineString>';
 }
 /**
  * Converts an input geojson LinearRing member of a polygon geometry to gml
@@ -105,13 +105,13 @@ function LineString(coords, gmlId, params={}){
  * @returns {string} a string containing gml representing the input geometry
  */
 function LinearRing(coords, gmlId, params={}){
-    enforceGmlId(gmlId);
-    var {srsName:srsName, srsDimension:srsDimension} = params;
-    return `<gml:LinearRing${attrs({'gml:id':gmlId, srsName})}>` +
-	`<gml:posList${attrs({srsDimension})}>` +
-	coords.map((e)=>e.reverse().join(' ')).join(' ') + 
-	'</gml:posList>' + 
-	'</gml:LinearRing>';
+  enforceGmlId(gmlId);
+  var {srsName:srsName, srsDimension:srsDimension} = params;
+  return `<gml:LinearRing${attrs({'gml:id':gmlId, srsName})}>` +
+    `<gml:posList${attrs({srsDimension})}>` +
+    coords.map((e)=>e.reverse().join(' ')).join(' ') + 
+    '</gml:posList>' + 
+    '</gml:LinearRing>';
 }
 /**
  * Converts an input geojson Polygon geometry to gml
@@ -124,22 +124,22 @@ function LinearRing(coords, gmlId, params={}){
  * @returns {string} a string containing gml representing the input geometry
  */
 function Polygon(coords, gmlId, params={}){
-    enforceGmlId(gmlId);
-    // geom.coordinates are arrays of LinearRings
-    var {srsName:srsName, srsDimension:srsDimension} = params;
-    let polygon = `<gml:Polygon${attrs({srsName, 'gml:id':gmlId})}>` +
-	    '<gml:exterior>' +
-	    LinearRing(coords[0]) +
-	    '</gml:exterior>';
-    if (coords.length >= 2){
-	for (let linearRing of coords.slice(1)){
-	    polygon += '<gml:interior>' +
-		LinearRing(linearRing) + 
-		'</gml:interior>';
-	}
+  enforceGmlId(gmlId);
+  // geom.coordinates are arrays of LinearRings
+  var {srsName:srsName, srsDimension:srsDimension} = params;
+  let polygon = `<gml:Polygon${attrs({srsName, 'gml:id':gmlId})}>` +
+        '<gml:exterior>' +
+        LinearRing(coords[0]) +
+        '</gml:exterior>';
+  if (coords.length >= 2){
+    for (let linearRing of coords.slice(1)){
+      polygon += '<gml:interior>' +
+        LinearRing(linearRing) + 
+        '</gml:interior>';
     }
-    polygon += '</gml:Polygon>';
-    return polygon;
+  }
+  polygon += '</gml:Polygon>';
+  return polygon;
 }
 /**
  * Converts an input geojson MultiPoint geometry to gml
@@ -152,8 +152,8 @@ function Polygon(coords, gmlId, params={}){
  * @returns {string} a string containing gml representing the input geometry
  */
 function MultiPoint(coords, gmlId, params={}){
-    enforceGmlId(gmlId);
-    return multi('MultiPoint', 'pointMember', Point, coords, gmlId, params);
+  enforceGmlId(gmlId);
+  return multi('MultiPoint', 'pointMember', Point, coords, gmlId, params);
 }
 
 /**
@@ -167,7 +167,7 @@ function MultiPoint(coords, gmlId, params={}){
  * @returns {string} a string containing gml representing the input geometry
  */
 function MultiLineString(coords, gmlId, params={}){
-    return multi('MultiCurve', 'curveMember', LineString, coords, gmlId, params);
+  return multi('MultiCurve', 'curveMember', LineString, coords, gmlId, params);
 }
 /**
  * Converts an input geojson MultiPolygon geometry to gml
@@ -180,15 +180,15 @@ function MultiLineString(coords, gmlId, params={}){
  * @returns {string} a string containing gml representing the input geometry
  */
 function MultiPolygon(coords, gmlId, params={}){
-    return multi('MultiSurface', 'surfaceMember', Polygon,
-		       coords, gmlId, params);
+  return multi('MultiSurface', 'surfaceMember', Polygon,
+               coords, gmlId, params);
 }
 /** @const 
  * @desc a namespace to switch between geojson-handling functions by geojson.type
  */
 const converter = {
-    Point, LineString, LinearRing, Polygon, MultiPoint, MultiLineString,
-    MultiPolygon, GeometryCollection
+  Point, LineString, LinearRing, Polygon, MultiPoint, MultiLineString,
+  MultiPolygon, GeometryCollection
 };
 /**
  * Converts an input geojson GeometryCollection geometry to gml
@@ -201,8 +201,8 @@ const converter = {
  * @returns {string} a string containing gml representing the input geometry
  */
 function GeometryCollection(geoms, gmlId, params={}){
-    return multi('MultiGeometry', 'geometryMember', converter,
-		 geoms, gmlId, params);
+  return multi('MultiGeometry', 'geometryMember', converter,
+               geoms, gmlId, params);
 }
 
 /**
@@ -220,13 +220,13 @@ function GeometryCollection(geoms, gmlId, params={}){
  * @returns {string} a valid gml string describing the input geojson geometry
  */
 function geomToGml(geom, gmlId, params){
-    return converter[geom.type](
-	geom.coordinates || geom.geometries,
-	gmlId,
-	params
-    );
+  return converter[geom.type](
+    geom.coordinates || geom.geometries,
+    gmlId,
+    params
+  );
 }
 module.exports = {
-    geomToGml, converter, Point, LineString, LinearRing,
-    Polygon, MultiPoint, MultiLineString, MultiPolygon
+  geomToGml, converter, Point, LineString, LinearRing,
+  Polygon, MultiPoint, MultiLineString, MultiPolygon
 };
