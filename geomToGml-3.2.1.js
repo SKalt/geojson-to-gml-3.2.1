@@ -1,4 +1,4 @@
-
+/* eslint-disable no-alert, no-console */
 /* 
  Note this can only convert what geojson can store: simple feature types, not
  coverage, topology, etc.
@@ -39,7 +39,7 @@ const enforceGmlId = (gmlId) =>{
  */
 function multi(name, memberName, membercb, geom, gmlId, params={}){
   enforceGmlId(gmlId);
-  var {srsName, srsDimension, gmlIds} = params;
+  var {srsName, gmlIds} = params;
   let multi = `<gml:${name}${attrs({srsName, 'gml:id':gmlId})}>`;
   geom.forEach(function(member, i){
     multi += `<gml:${memberName}>`;
@@ -126,7 +126,7 @@ function LinearRing(coords, gmlId, params={}){
 function Polygon(coords, gmlId, params={}){
   enforceGmlId(gmlId);
   // geom.coordinates are arrays of LinearRings
-  var {srsName:srsName, srsDimension:srsDimension} = params;
+  var {srsName} = params;
   let polygon = `<gml:Polygon${attrs({srsName, 'gml:id':gmlId})}>` +
         '<gml:exterior>' +
         LinearRing(coords[0]) +
