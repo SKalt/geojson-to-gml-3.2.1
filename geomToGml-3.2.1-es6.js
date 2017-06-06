@@ -223,7 +223,7 @@ function geomToGml(geom, gmlId, params){
     params
   );
 }
-module.exports = {
+export {
   geomToGml, converter, Point, LineString, LinearRing,
   Polygon, MultiPoint, MultiLineString, MultiPolygon
 };
