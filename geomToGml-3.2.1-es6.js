@@ -40,8 +40,8 @@ function multi(name, memberName, membercb, geom, gmlId, params={}){
   enforceGmlId(gmlId);
   var {srsName, gmlIds} = params;
   let multi = `<gml:${name}${attrs({srsName, 'gml:id':gmlId})}>`;
+  multi += `<gml:${memberName}>`;
   geom.forEach(function(member, i){
-    multi += `<gml:${memberName}>`;
     let _gmlId = member.id || (gmlIds || [])[i] || '';
     if (name == 'MultiGeometry'){
       let memberType = member.type;
@@ -50,8 +50,8 @@ function multi(name, memberName, membercb, geom, gmlId, params={}){
     } else {
       multi += membercb(member, _gmlId, params);
     }
-    multi += `</gml:${memberName}>`;
   });
+  multi += `</gml:${memberName}>`;
   return multi + `</gml:${name}>`;
 }
 /**
@@ -151,7 +151,7 @@ function Polygon(coords, gmlId, params={}){
  */
 function MultiPoint(coords, gmlId, params={}){
   enforceGmlId(gmlId);
-  return multi('MultiPoint', 'pointMember', Point, coords, gmlId, params);
+  return multi('MultiPoint', 'pointMembers', Point, coords, gmlId, params);
 }
 
 /**
@@ -165,7 +165,7 @@ function MultiPoint(coords, gmlId, params={}){
  * @returns {string} a string containing gml representing the input geometry
  */
 function MultiLineString(coords, gmlId, params={}){
-  return multi('MultiCurve', 'curveMember', LineString, coords, gmlId, params);
+  return multi('MultiCurve', 'curveMembers', LineString, coords, gmlId, params);
 }
 /**
  * Converts an input geojson MultiPolygon geometry to gml
@@ -178,7 +178,7 @@ function MultiLineString(coords, gmlId, params={}){
  * @returns {string} a string containing gml representing the input geometry
  */
 function MultiPolygon(coords, gmlId, params={}){
-  return multi('MultiSurface', 'surfaceMember', Polygon, coords, gmlId, params);
+  return multi('MultiSurface', 'surfaceMembers', Polygon, coords, gmlId, params);
 }
 /** @const 
  * @desc a namespace to switch between geojson-handling functions by geojson.type
@@ -198,7 +198,7 @@ const converter = {
  * @returns {string} a string containing gml representing the input geometry
  */
 function GeometryCollection(geoms, gmlId, params={}){
-  return multi('MultiGeometry', 'geometryMember', converter,
+  return multi('MultiGeometry', 'geometryMembers', converter,
                geoms, gmlId, params);
 }
 
