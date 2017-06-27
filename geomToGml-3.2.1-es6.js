@@ -2,6 +2,28 @@
  Note this can only convert what geojson can store: simple feature types, not
  coverage, topology, etc.
  */
+
+/** 
+ * geojson coordinates are in longitude/easting, latitude/northing [,elevation]
+ * order by [RFC-7946 § 3.1.1]{@link https://tools.ietf.org/html/rfc7946#section-3.1.1}.
+ * however, you may use a CRS that follows a latitude/easting,
+ * longitude/northing, [,elevation] order.
+*/
+var coordinateOrder = true;
+const setCoordinateOrder = (order) => coordinateOrder = order;
+const orderCoords = (coords) => {
+  if (coordinateOrder){
+    return coords;
+  } else {
+    if (coords[2]){
+      return [coords[1], coords[0], coords[2]];
+    } else {
+      return coords.revers();
+    }
+  }
+};
+
+
 /** @private*/
 function attrs(attrMappings){
   let results = '';
@@ -69,7 +91,7 @@ function Point(coords, gmlId, params={}){
   var {srsName:srsName, srsDimension:srsDimension} = params;
   return `<gml:Point${attrs({srsName:srsName, 'gml:id': gmlId})}>` +
     `<gml:pos${attrs({srsDimension})}>` +
-    coords.reverse().join(' ') +
+    orderCoords(coords).join(' ') +
     '</gml:pos>' +
     '</gml:Point>';
 }
@@ -88,7 +110,7 @@ function LineString(coords, gmlId, params={}){
   var {srsName:srsName, srsDimension:srsDimension} = params;
   return `<gml:LineString${attrs({srsName, 'gml:id':gmlId})}>` +
     `<gml:posList${attrs({srsDimension})}>` +
-    coords.map((e)=>e.reverse().join(' ')).join(' ') + 
+    coords.map((e)=>orderCoords(e).join(' ')).join(' ') + 
     '</gml:posList>' +
     '</gml:LineString>';
 }
@@ -107,7 +129,7 @@ function LinearRing(coords, gmlId, params={}){
   var {srsName:srsName, srsDimension:srsDimension} = params;
   return `<gml:LinearRing${attrs({'gml:id':gmlId, srsName})}>` +
     `<gml:posList${attrs({srsDimension})}>` +
-    coords.map((e)=>e.reverse().join(' ')).join(' ') + 
+    coords.map((e)=>orderCoords(e).join(' ')).join(' ') + 
     '</gml:posList>' + 
     '</gml:LinearRing>';
 }
@@ -223,7 +245,9 @@ function geomToGml(geom, gmlId, params){
     params
   );
 }
+
 export {
   geomToGml, converter, Point, LineString, LinearRing,
-  Polygon, MultiPoint, MultiLineString, MultiPolygon
+  Polygon, MultiPoint, MultiLineString, MultiPolygon,
+  setCoordinateOrder
 };
