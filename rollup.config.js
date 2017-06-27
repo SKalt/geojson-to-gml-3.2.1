@@ -7,9 +7,8 @@ import uglify from 'rollup-plugin-uglify';
 
 export default {
   entry: 'geomToGml-3.2.1-es6.js',
-  dest: 'geomToGml-3.2.1.min.js',
-  format: 'iife',
-  sourceMap: 'inline',
+  dest: 'geomToGml-3.2.1.js',
+  format: 'cjs',
   plugins: [
     resolve({
       jsnext: true,

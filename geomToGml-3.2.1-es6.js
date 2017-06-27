@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* 
  Note this can only convert what geojson can store: simple feature types, not
  coverage, topology, etc.
@@ -8,20 +9,19 @@
  * order by [RFC-7946 § 3.1.1]{@link https://tools.ietf.org/html/rfc7946#section-3.1.1}.
  * however, you may use a CRS that follows a latitude/easting,
  * longitude/northing, [,elevation] order.
-*/
+ */
 var coordinateOrder = true;
 const setCoordinateOrder = (order) => coordinateOrder = order;
-const orderCoords = (coords) => {
+function orderCoords(coords){
   if (coordinateOrder){
     return coords;
-  } else {
-    if (coords[2]){
-      return [coords[1], coords[0], coords[2]];
-    } else {
-      return coords.revers();
-    }
-  }
-};
+  } 
+  if (coords[2]){
+    return [coords[1], coords[0], coords[2]];
+  } 
+  return coords.reverse();
+}
+
 
 
 /** @private*/
