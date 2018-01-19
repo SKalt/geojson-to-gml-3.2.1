@@ -1,3 +1,10 @@
 language: node_js
 node_js:
-  - node
+- node
+deploy:
+  provider: npm
+  email: kalt.steven@gmail.com
+  on:
+    branch: master
+  api_key:
+    secure: F/c3lU6r8dAm5iWvsMaFOcucoHOAakOUQ1i3QmW/w9KIQyS6vQhvy6tiqZZsYOiI4elhebilvFRbYMkWJPi0hr2ixh3rmbVAtX+Zs6+HNmV8qOMgCCP0I9yt45sryVxGyx00AbtTU51YIlOej16qJO5WGpeZU1Q8bdmv0b4mP+X/DYKC/UreiQdG4wlaG5vnczYh17DDg49Y8w85g/8AwisRliurfUF2olKOUAxY8EwKOYIEA7FCbzTOigOLm6K3aXXfqKi05Xj4Ed0NEtBc8GrS3qZM5vmVXC/s/q0e54/EMzIHlluQZgmiUHOhAsTOfa5xtaH7y1TWKXC4p+kiyYZ/6LJLYP0MeUkn5XLHpR+8debhSFzRVHuD860OIwbCFCEjI2wRb+k9/3zqUsejaYj5mRxYqwADpaq8LxssEMEDOFaCU75K3WnwoSVA0vukBXEoGYMcK8xMDBe9G2p2CvCfKuzS6Ch/GB9yFZg5m+pTmZrP5mCYabjIWxMxY+2WnjMd0DrjYmO5xbZqXPgVcFnRPtK/wtOZTszDfF1+FOxAm32m8sTLavb0ipvGTgQDnjm1EjMIgU/fQNEl8k1tWU3RXC0pFL892ERwMOxTH+HyaHRdgEuc6BNJRQLwVm5sK9E0IVRmuBnJJCYVXvx2/qGGKV9yx3GhCz076WZdUtE=
