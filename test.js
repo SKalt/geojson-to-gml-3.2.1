@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 // from http://geojson.org/geojson-spec.html#examples
-var gml = require('./dist/index.es5.common.js').geomToGml;
+var gml = require('./dist/common.js').geomToGml;
 // var assert = require('assert');
 var validate = require('xsd-schema-validator').validateXML;
 
