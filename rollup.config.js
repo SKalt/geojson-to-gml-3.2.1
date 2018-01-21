@@ -5,14 +5,6 @@ import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import uglify from 'rollup-plugin-uglify';
 
-// transpile to es5, cjs for backwards compatibility. Bundlers will still
-//   // use the es6 version due to package.json's `module` field.
-//   presets: [
-//     ['env', {
-//       {targets: ['']}
-//     }]
-//   ]
-// }
 const base = {
   input: 'src/index.js',
   plugins: [
