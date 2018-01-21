@@ -242,15 +242,11 @@ makeConverter({lineString})
 Optional parameters for conversion of geojson to gml geometries
 
 **Kind**: inner typedef of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| params.srsName | <code>String</code> | as string specifying SRS, e.g. 'EPSG:4326'. Only applies to multigeometries. |
-
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
+| params.srsName | <code>String</code> | as string specifying SRS, e.g. 'EPSG:4326'. Only applies to multigeometries. |
 | params.gmlIds | <code>?Array.&lt;Number&gt;</code> \| <code>?Array.&lt;String&gt;</code> | an array of number/string gml:ids of the member geometries. |
 | params.srsDimension | <code>Number</code> \| <code>String</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
 
