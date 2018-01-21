@@ -3,16 +3,17 @@
   "version": "1.1.2",
   "description": "a package to translate geojson to gml",
   "main": "geomToGml-3.2.1.js",
-  "module": "geomToGml-3.2.1-es6.js",
+  "module": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/SKalt/geojson-to-gml-3.2.1.git"
   },
   "scripts": {
+    "pretest": "npm run dev",
     "test": "mocha --timeout 30000",
-    "make-docs": "node makeDocs.js",
-    "dev": "rollup -c",
-    "build": "ENV=production rollup -c"
+    "make-docs": "node make-docs.js",
+    "dev": "rollup -c && npm run make-docs",
+    "build": "ENV=production rollup -c && npm run make-docs"
   },
   "keywords": [
     "geojson",
@@ -25,12 +26,12 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
     "eslint": "^4.0.0",
     "eslint-config-google": "^0.8.0",
     "jsdoc-to-markdown": "^3.0.0",
     "mocha": "^4.0.1",
-    "rollup": "^0.42.0",
+    "rollup": "^0.54.1",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-eslint": "^3.0.0",
