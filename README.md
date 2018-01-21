@@ -1,6 +1,6 @@
 # geojson-to-gml-3
 [![npm version](https://badge.fury.io/js/geojson-to-gml-3.svg)](https://badge.fury.io/js/geojson-to-gml-3)
-![Build Status](https://travis-ci.org/SKalt/geojson-to-gml-3.2.1.svg?branch=master)
+![Build Status](https://img.shields.io/travis/SKalt/geojson-to-gml-3.2.1/master.svg)
 
 
 A package to translate geojson geometries to GML 3.2.1.
