@@ -51,7 +51,7 @@ function attrs(attrMappings){
 /**
  * Optional parameters for conversion of geojson to gml geometries
  * @typedef {Object} Params
- * @param {?String} params.srsName as string specifying SRS, e.g. 'EPSG:4326'. Only applies to multigeometries.
+ * @property {?String} params.srsName as string specifying SRS, e.g. 'EPSG:4326'. Only applies to multigeometries.
  * @property {?Number[]|?String[]} params.gmlIds an array of number/string gml:ids of the member geometries.
  * @property {?Number|?String} params.srsDimension the dimensionality of each coordinate, i.e. 2 or 3.
  */
