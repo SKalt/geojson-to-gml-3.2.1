@@ -1,6 +1,6 @@
 {
   "name": "geojson-to-gml-3",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "a package to translate geojson to gml",
   "main": "dist/common.js",
   "module": "src/index.js",
