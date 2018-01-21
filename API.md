@@ -7,19 +7,22 @@ A library of functions to convert geojson to GML.
 * [geojson-to-gml-3](#module_geojson-to-gml-3)
     * _static_
         * [.config](#module_geojson-to-gml-3.config) : <code>Object</code>
-        * [.Point(coords, gmlId, params)](#module_geojson-to-gml-3.Point) ⇒ <code>String</code>
-        * [.LineString(coords, gmlId, params)](#module_geojson-to-gml-3.LineString) ⇒ <code>String</code>
-        * [.LinearRing(coords, gmlId, params)](#module_geojson-to-gml-3.LinearRing) ⇒ <code>String</code>
-        * [.Polygon(coords, gmlId, params)](#module_geojson-to-gml-3.Polygon) ⇒ <code>String</code>
-        * [.MultiPoint(coords, gmlId, params)](#module_geojson-to-gml-3.MultiPoint) ⇒ <code>String</code>
-        * [.MultiLineString(coords, gmlId, params)](#module_geojson-to-gml-3.MultiLineString) ⇒ <code>String</code>
-        * [.MultiPolygon(coords, gmlId, params)](#module_geojson-to-gml-3.MultiPolygon) ⇒ <code>String</code>
-        * [.GeometryCollection(coords, gmlId, params)](#module_geojson-to-gml-3.GeometryCollection) ⇒ <code>String</code>
+        * [.point(coords, gmlId, params)](#module_geojson-to-gml-3.point) ⇒ <code>String</code>
+        * [.lineString(coords, gmlId, params)](#module_geojson-to-gml-3.lineString) ⇒ <code>String</code>
+        * [.linearRing(coords, gmlId, params)](#module_geojson-to-gml-3.linearRing) ⇒ <code>String</code>
+        * [.polygon(coords, gmlId, params)](#module_geojson-to-gml-3.polygon) ⇒ <code>String</code>
+        * [.multiPoint(coords, gmlId, params)](#module_geojson-to-gml-3.multiPoint) ⇒ <code>String</code>
+        * [.multiLineString(coords, gmlId, params)](#module_geojson-to-gml-3.multiLineString) ⇒ <code>String</code>
+        * [.multiPolygon(coords, gmlId, params)](#module_geojson-to-gml-3.multiPolygon) ⇒ <code>String</code>
+        * [.makeTranslator(obj)](#module_geojson-to-gml-3.makeTranslator)
+        * [.geometryCollection(coords, gmlId, params)](#module_geojson-to-gml-3.geometryCollection) ⇒ <code>String</code>
         * [.geomToGml(geom, gmlId, params, gmlIds)](#module_geojson-to-gml-3.geomToGml) ⇒ <code>String</code>
     * _inner_
-        * [~converter](#module_geojson-to-gml-3..converter) : <code>Object</code>
+        * [~allTypes](#module_geojson-to-gml-3..allTypes) : <code>Object</code>
         * [~orderCoords(coords)](#module_geojson-to-gml-3..orderCoords) ⇒ <code>Array.&lt;Number&gt;</code>
         * [~multi(name, memberName, geom, gmlId, params)](#module_geojson-to-gml-3..multi) ⇒ <code>String</code>
+        * [~makeConverter(obj)](#module_geojson-to-gml-3..makeConverter) ⇒ <code>Object</code>
+        * [~Params](#module_geojson-to-gml-3..Params) : <code>Object</code>
 
 <a name="module_geojson-to-gml-3.config"></a>
 
@@ -27,9 +30,9 @@ A library of functions to convert geojson to GML.
 Configuration for this module.
 
 **Kind**: static constant of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
-<a name="module_geojson-to-gml-3.Point"></a>
+<a name="module_geojson-to-gml-3.point"></a>
 
-### geojson-to-gml-3.Point(coords, gmlId, params) ⇒ <code>String</code>
+### geojson-to-gml-3.point(coords, gmlId, params) ⇒ <code>String</code>
 Converts an input geojson Point geometry to gml
 
 **Kind**: static method of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
@@ -39,13 +42,11 @@ Converts an input geojson Point geometry to gml
 | --- | --- | --- |
 | coords | <code>Array.&lt;Number&gt;</code> | the coordinates member of the geojson geometry |
 | gmlId | <code>String</code> \| <code>Number</code> | the gml:id |
-| params | <code>Object</code> | optional parameters |
-| params.srsName | <code>String</code> \| <code>undefined</code> | as string specifying SRS |
-| params.srsDimension | <code>Number</code> \| <code>String</code> \| <code>undefined</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
+| params | <code>Params</code> | optional parameters |
 
-<a name="module_geojson-to-gml-3.LineString"></a>
+<a name="module_geojson-to-gml-3.lineString"></a>
 
-### geojson-to-gml-3.LineString(coords, gmlId, params) ⇒ <code>String</code>
+### geojson-to-gml-3.lineString(coords, gmlId, params) ⇒ <code>String</code>
 Converts an input geojson LineString geometry to gml
 
 **Kind**: static method of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
@@ -55,13 +56,11 @@ Converts an input geojson LineString geometry to gml
 | --- | --- | --- |
 | coords | <code>Array.&lt;Array.&lt;Number&gt;&gt;</code> | the coordinates member of the geojson geometry |
 | gmlId | <code>String</code> \| <code>Number</code> | the gml:id |
-| params | <code>Object</code> | optional parameters |
-| params.srsName | <code>String</code> \| <code>undefined</code> | as string specifying SRS |
-| params.srsDimension | <code>Number</code> \| <code>String</code> \| <code>undefined</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
+| params | <code>Params</code> | optional parameters |
 
-<a name="module_geojson-to-gml-3.LinearRing"></a>
+<a name="module_geojson-to-gml-3.linearRing"></a>
 
-### geojson-to-gml-3.LinearRing(coords, gmlId, params) ⇒ <code>String</code>
+### geojson-to-gml-3.linearRing(coords, gmlId, params) ⇒ <code>String</code>
 Converts an input geojson LinearRing member of a polygon geometry to gml
 
 **Kind**: static method of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
@@ -71,13 +70,11 @@ Converts an input geojson LinearRing member of a polygon geometry to gml
 | --- | --- | --- |
 | coords | <code>Array.&lt;Array.&lt;Number&gt;&gt;</code> | the coordinates member of the geojson geometry |
 | gmlId | <code>String</code> \| <code>Number</code> | the gml:id |
-| params | <code>Object</code> | optional parameters |
-| params.srsName | <code>String</code> \| <code>undefined</code> | as string specifying SRS |
-| params.srsDimension | <code>Number</code> \| <code>String</code> \| <code>undefined</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
+| params | <code>Params</code> | optional parameters |
 
-<a name="module_geojson-to-gml-3.Polygon"></a>
+<a name="module_geojson-to-gml-3.polygon"></a>
 
-### geojson-to-gml-3.Polygon(coords, gmlId, params) ⇒ <code>String</code>
+### geojson-to-gml-3.polygon(coords, gmlId, params) ⇒ <code>String</code>
 Converts an input geojson Polygon geometry to gml
 
 **Kind**: static method of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
@@ -87,13 +84,11 @@ Converts an input geojson Polygon geometry to gml
 | --- | --- | --- |
 | coords | <code>Array.&lt;Array.&lt;Array.&lt;Number&gt;&gt;&gt;</code> | the coordinates member of the geojson geometry |
 | gmlId | <code>String</code> \| <code>Number</code> | the gml:id |
-| params | <code>Object</code> | optional parameters |
-| params.srsName | <code>String</code> \| <code>undefined</code> | as string specifying SRS |
-| params.srsDimension | <code>Number</code> \| <code>String</code> \| <code>undefined</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
+| params | <code>Params</code> | optional parameters |
 
-<a name="module_geojson-to-gml-3.MultiPoint"></a>
+<a name="module_geojson-to-gml-3.multiPoint"></a>
 
-### geojson-to-gml-3.MultiPoint(coords, gmlId, params) ⇒ <code>String</code>
+### geojson-to-gml-3.multiPoint(coords, gmlId, params) ⇒ <code>String</code>
 Converts an input geojson MultiPoint geometry to gml
 
 **Kind**: static method of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
@@ -103,13 +98,11 @@ Converts an input geojson MultiPoint geometry to gml
 | --- | --- | --- |
 | coords | <code>Array.&lt;Array.&lt;Number&gt;&gt;</code> | the coordinates member of the geojson geometry |
 | gmlId | <code>String</code> \| <code>Number</code> | the gml:id |
-| params | <code>Object</code> | optional parameters |
-| params.srsName | <code>String</code> \| <code>undefined</code> | as string specifying SRS |
-| params.srsDimension | <code>Number</code> \| <code>String</code> \| <code>undefined</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
+| params | <code>Params</code> | optional parameters |
 
-<a name="module_geojson-to-gml-3.MultiLineString"></a>
+<a name="module_geojson-to-gml-3.multiLineString"></a>
 
-### geojson-to-gml-3.MultiLineString(coords, gmlId, params) ⇒ <code>String</code>
+### geojson-to-gml-3.multiLineString(coords, gmlId, params) ⇒ <code>String</code>
 Converts an input geojson MultiLineString geometry to gml
 
 **Kind**: static method of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
@@ -119,13 +112,11 @@ Converts an input geojson MultiLineString geometry to gml
 | --- | --- | --- |
 | coords | <code>Array.&lt;Array.&lt;Array.&lt;Number&gt;&gt;&gt;</code> | the coordinates member of the geojson geometry |
 | gmlId | <code>String</code> \| <code>Number</code> | the gml:id |
-| params | <code>Object</code> | optional parameters |
-| params.srsName | <code>String</code> \| <code>undefined</code> | as string specifying SRS |
-| params.srsDimension | <code>Number</code> \| <code>String</code> \| <code>undefined</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
+| params | <code>Params</code> | optional parameters |
 
-<a name="module_geojson-to-gml-3.MultiPolygon"></a>
+<a name="module_geojson-to-gml-3.multiPolygon"></a>
 
-### geojson-to-gml-3.MultiPolygon(coords, gmlId, params) ⇒ <code>String</code>
+### geojson-to-gml-3.multiPolygon(coords, gmlId, params) ⇒ <code>String</code>
 Converts an input geojson MultiPolygon geometry to gml
 
 **Kind**: static method of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
@@ -135,13 +126,28 @@ Converts an input geojson MultiPolygon geometry to gml
 | --- | --- | --- |
 | coords | <code>Array.&lt;Array.&lt;Array.&lt;Array.&lt;Number&gt;&gt;&gt;&gt;</code> | the coordinates member of the geojson geometry |
 | gmlId | <code>String</code> \| <code>Number</code> | the gml:id |
-| params | <code>Object</code> | optional parameters |
-| params.srsName | <code>String</code> \| <code>undefined</code> | as string specifying SRS |
-| params.srsDimension | <code>Number</code> \| <code>String</code> \| <code>undefined</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
+| params | <code>Params</code> | optional parameters |
 
-<a name="module_geojson-to-gml-3.GeometryCollection"></a>
+<a name="module_geojson-to-gml-3.makeTranslator"></a>
 
-### geojson-to-gml-3.GeometryCollection(coords, gmlId, params) ⇒ <code>String</code>
+### geojson-to-gml-3.makeTranslator(obj)
+A helper to map geometry types to converter functions.
+
+**Kind**: static method of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| obj | <code>Object</code> | an object mapping camelcase-d geometry type names to converter functions for that type. |
+
+**Example**  
+```js
+import {point, lineString} from 'geojson-to-gml-3';
+const geomToGml = makeTranslator({point, lineString});
+geomToGml({type: 'Point', coordinates: [0, 0]});
+```
+<a name="module_geojson-to-gml-3.geometryCollection"></a>
+
+### geojson-to-gml-3.geometryCollection(coords, gmlId, params) ⇒ <code>String</code>
 Converts an input geojson GeometryCollection geometry to gml
 
 **Kind**: static method of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
@@ -152,8 +158,8 @@ Converts an input geojson GeometryCollection geometry to gml
 | coords | <code>Array.&lt;Object&gt;</code> | the coordinates member of the geojson geometry |
 | gmlId | <code>String</code> \| <code>Number</code> | the gml:id |
 | params | <code>Object</code> | optional parameters |
-| params.srsName | <code>String</code> \| <code>undefined</code> | as string specifying SRS |
-| params.srsDimension | <code>Number</code> \| <code>String</code> \| <code>undefined</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
+| params.srsName | <code>String</code> | as string specifying SRS |
+| params.srsDimension | <code>Number</code> \| <code>String</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
 
 <a name="module_geojson-to-gml-3.geomToGml"></a>
 
@@ -167,17 +173,17 @@ Translates any geojson geometry into GML 3.2.1
 | Param | Type | Description |
 | --- | --- | --- |
 | geom | <code>Object</code> | a geojson geometry object |
-| geom.coordinates | <code>Array</code> \| <code>undefined</code> | the nested array of coordinates forming the geometry |
-| geom.geometries | <code>Array.&lt;Object&gt;</code> \| <code>undefined</code> | for a GeometryCollection only, the array of member geometry objects |
+| geom.coordinates | <code>Array</code> | the nested array of coordinates forming the geometry |
+| geom.geometries | <code>Array.&lt;Object&gt;</code> | for a GeometryCollection only, the array of member geometry objects |
 | gmlId | <code>String</code> \| <code>Number</code> | the gml:id of the geometry |
 | params | <code>object</code> | optional parameters |
-| params.srsName | <code>String</code> \| <code>undefined</code> | a string specifying the SRS |
-| params.srsDimension | <code>String</code> \| <code>undefined</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
-| gmlIds | <code>Array.&lt;Number&gt;</code> \| <code>Array.&lt;String&gt;</code> \| <code>undefined</code> | an array of number/string gml:ids of the member geometries of a multigeometry. |
+| params.srsName | <code>String</code> | a string specifying the SRS |
+| params.srsDimension | <code>String</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
+| gmlIds | <code>?Array.&lt;Number&gt;</code> \| <code>?Array.&lt;String&gt;</code> | an array of number/string gml:ids of the member geometries of a multigeometry. |
 
-<a name="module_geojson-to-gml-3..converter"></a>
+<a name="module_geojson-to-gml-3..allTypes"></a>
 
-### geojson-to-gml-3~converter : <code>Object</code>
+### geojson-to-gml-3~allTypes : <code>Object</code>
 a namespace to switch between geojson-handling functions by geojson.type
 
 **Kind**: inner constant of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
@@ -211,8 +217,40 @@ A handler to compile geometries to multigeometries
 | memberName | <code>String</code> | the gml:tag of each multigeometry member. |
 | geom | <code>Array.&lt;Object&gt;</code> \| <code>Array</code> | an array of geojson geometries |
 | gmlId | <code>String</code> \| <code>Number</code> | the gml:id of the multigeometry |
-| params | <code>Object</code> | optional parameters. Omit gmlIds at your own risk, however. |
-| params.srsName | <code>String</code> \| <code>undefined</code> | as string specifying SRS |
-| params.gmlIds | <code>Array.&lt;Number&gt;</code> \| <code>Array.&lt;String&gt;</code> | an array of number/string gml:ids of the member geometries. |
-| params.srsDimension | <code>Number</code> \| <code>String</code> \| <code>undefined</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
+| params | <code>Params</code> | optional parameters. Omit gmlIds at your own risk, however. |
+
+<a name="module_geojson-to-gml-3..makeConverter"></a>
+
+### geojson-to-gml-3~makeConverter(obj) ⇒ <code>Object</code>
+A helper to de-camelcase this module's geometry conversion methods
+
+**Kind**: inner method of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
+**Returns**: <code>Object</code> - a mapping of capitalized geometry types to converter functions  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| obj | <code>Object</code> | a mapping of camelcase geometry types to converter functions |
+
+**Example**  
+```js
+makeConverter({lineString})
+// returns {LineString: lineString}
+```
+<a name="module_geojson-to-gml-3..Params"></a>
+
+### geojson-to-gml-3~Params : <code>Object</code>
+Optional parameters for conversion of geojson to gml geometries
+
+**Kind**: inner typedef of [<code>geojson-to-gml-3</code>](#module_geojson-to-gml-3)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| params.srsName | <code>String</code> | as string specifying SRS, e.g. 'EPSG:4326'. Only applies to multigeometries. |
+
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| params.gmlIds | <code>?Array.&lt;Number&gt;</code> \| <code>?Array.&lt;String&gt;</code> | an array of number/string gml:ids of the member geometries. |
+| params.srsDimension | <code>Number</code> \| <code>String</code> | the dimensionality of each coordinate, i.e. 2 or 3. |
 
