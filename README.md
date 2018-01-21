@@ -37,6 +37,7 @@ const geomToGml = makeTranslator({point, lineString});
 geomToGml(turf.point([0,0]).geometry);
 geomToGml(turf.linString([[0,0], [1,1]]));
 ```
+For more details, see [the API docs](./API.md)
 ## Contribute
 
 Contributions are welcome! Please submit issues, reference them in your PR, and
