@@ -145,12 +145,12 @@ export function polygon(coords, gmlId, params={}){
   var {srsName} = params;
   let polygon = `<gml:Polygon${attrs({srsName, 'gml:id':gmlId})}>` +
         '<gml:exterior>' +
-        linearRing(coords[0]) +
+        linearRing(coords[0], undefined, params) +
         '</gml:exterior>';
   if (coords.length >= 2){
     for (let ring of coords.slice(1)){
       polygon += '<gml:interior>' +
-        linearRing(ring) +
+        linearRing(ring, undefined, params) +
         '</gml:interior>';
     }
   }
