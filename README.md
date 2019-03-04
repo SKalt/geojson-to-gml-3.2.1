@@ -25,7 +25,7 @@ npm install geojson-to-gml-3
 ```
 // convert any geometry
 import turf from '@turf/helpers';
-import {geomToGml} from 'geojso-to-gml-3';
+import {geomToGml} from 'geojson-to-gml-3';
 geomToGml(turf.point([0,0]).geometry);
 
 // or for ultra-slim builds, import only what you need.
