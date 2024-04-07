@@ -1,0 +1,1 @@
+<gml:MultiCurve><gml:curveMembers><gml:LineString><gml:posList>100 0 101 1</gml:posList><gml:LineString><gml:posList>102 2 103 3</gml:posList></gml:curveMembers></gml:MultiCurve>

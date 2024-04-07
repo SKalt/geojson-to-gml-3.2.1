@@ -1,0 +1,1 @@
+<gml:MultiPoint><gml:pointMembers><gml:Point><gml:pos>100 0</gml:pos></gml:Point><gml:Point><gml:pos>101 1</gml:pos></gml:Point></gml:pointMembers></gml:MultiPoint>

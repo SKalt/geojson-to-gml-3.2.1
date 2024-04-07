@@ -1,0 +1,14 @@
+version: "0.2"
+language: en
+words:
+  - apos
+  - epsg
+  - geometrycollection
+  - geoserver
+  - geospatial
+  - linebreak
+  - multigeometries
+  - multigeometry
+  - multilinestring
+  - multipoint
+  - multipolygon

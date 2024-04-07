@@ -1,0 +1,1 @@
+<gml:Polygon><gml:exterior><gml:LinearRing><gml:posList>100 0 101 0 101 1 100 1 100 0</gml:posList></gml:LinearRing></gml:exterior></gml:Polygon>

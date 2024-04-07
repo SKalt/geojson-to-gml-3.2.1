@@ -44,27 +44,20 @@ yarn add geojson-to-gml-3
 ```ts
 // convert any geometry
 import turf from "@turf/helpers";
-import { geomToGml } from "geojson-to-gml-3";
-geomToGml(turf.point([0, 0]).geometry);
+import gml from "geojson-to-gml-3";
+console.log(gml(turf.point([0, 0]).geometry));
+// -> "<gml:Point><gml:pos>0 0</gml:pos></gml:Point>"
 
-// or for ultra-slim builds, import only what you need.
-import { point, lineString, makeTranslator } from "geojson-to-gml-3";
-const geomToGml = makeTranslator({ point, lineString });
-// returns (geom, gmlId, params) => {
-//  return {Point:point, LineString:lineString}[geom.type](geom, gmlId, params);
-// }
-geomToGml(turf.point([0, 0]).geometry);
-geomToGml(
-  turf.linString([
-    [0, 0],
-    [1, 1],
-  ])
+// or for slimmer builds, import only what you need.
+import { lineString } from "geojson-to-gml-3";
+
+console.log(
+  lineString(
+    turf.lineString([
+      [0, 1],
+      [2, 3],
+    ]).geometry,
+  ),
 );
+// -> <gml:LineString><gml:posList>0 1 2 3</gml:posList>
 ```
-
-For more details, see [the API docs](./API.md)
-
-## Contribute
-
-Contributions are welcome! Please submit issues, reference them in your PR, and
-make sure to add tests for any contributions you make.

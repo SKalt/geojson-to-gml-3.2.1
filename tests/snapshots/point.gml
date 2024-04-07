@@ -1,0 +1,1 @@
+<gml:Point><gml:pos>102 0.5</gml:pos></gml:Point>

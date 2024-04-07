@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "lib": ["es2021"],
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
+    "removeComments": false,
+    "newLine": "lf",
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+
+    "strict": true /* Enable all strict type-checking options. */,
+    // "noPropertyAccessFromIndexSignature": true,       /* Enforces using indexed accessors for keys declared using an indexed type. */
+    "allowUnusedLabels": false /* Disable error reporting for unused labels. */,
+    "allowUnreachableCode": false /* Disable error reporting for unreachable code. */,
+
+    /* Completeness */
+    // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
+    "skipLibCheck": false /* Skip type checking all .d.ts files. */
+  },
+  "include": [
+    "src"
+  ] /* Specify an array of filenames and patterns to include in the program. */
+}
